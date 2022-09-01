@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod --reference=Rhello hello
+chmod 753 hello
