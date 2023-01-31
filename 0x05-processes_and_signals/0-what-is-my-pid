@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-# ash script that displays its own PID.
+#Bash script that displays its own PID.
 
- echo $$
+echo $$
