@@ -1,6 +1,6 @@
 # Create a file /tmp/school
 file { '/tmp/school':
-  ensure  => present,
+  ensure  => 'file',
   path    => '/tmp/school'
   owner   => 'www-data',
   group   => 'www-data',
