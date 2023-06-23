@@ -1,4 +1,3 @@
-
 file { '/tmp/school':
   ensure  => present,
   owner   => 'www-data',
