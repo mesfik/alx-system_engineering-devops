@@ -1,22 +1,17 @@
 #!/usr/bin/env bash
-# install and configure nginx
+# Install and configure nginx web server
 
+apt-get update
 apt-get update
 apt-get install -y nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "server {
-        listen 80;
-        listen [::]:80;
-
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-
-	server_name helthmonitoring.tech;
-
-        location /redirect_me {
-		return 301 https://github.com/mesfik;
+    listen 80;
+    listen [::]:80 default_server;
+    root   /var/www/html;
+    index  index.html index index.html index.htm index.nginx-debian.html;
+    location /redirect_me {
+        return 301 https://github.com/mesfik;
         }
-
 }" > /etc/nginx/sites-available/default
-
-service nginx start
+service nginx restart
