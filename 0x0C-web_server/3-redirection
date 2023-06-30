@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
-# Script that installs Nginx server and redirects /redirect_me
+# install and configure nginx
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" | sudo tee /var/www/html/index
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;' /etc/nginx/sites-available/default
-sudo service nginx restart
+apt-get update
+apt-get install -y nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+	server_name helthmonitoring.tech;
+
+        location /redirect_me {
+		return 301 https://github.com/mesfik;
+        }
+
+}" > /etc/nginx/sites-available/default
+
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+service nginx start
