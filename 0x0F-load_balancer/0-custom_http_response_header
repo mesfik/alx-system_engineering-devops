@@ -7,6 +7,8 @@ apt-get install -y nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/404.html;
 
+hostname=$(hostname)
+
 echo "server {
     listen 80;
     listen [::]:80;
