@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
+
+apt-get update
+apt-get update
+apt-get install -y nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/404.html;
+
+echo "server {
+    listen 80;
+    listen [::]:80;
+    root   /var/www/html;
+    index  index.html index index.html index.htm index.nginx-debian.html;
+
+    add_header X-Served-By \$hostname;
+
+    location /redirect_me {
+        return 301 https://github.com/mesfik;
+        }
+
+    error_page 404 /404.html;
+    location = /404.html{
+        root /var/www/html;
+        internal;
+    }
+}" > /etc/nginx/sites-available/default
+
+service nginx restart
