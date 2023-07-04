@@ -7,6 +7,8 @@ sudo apt-get install --no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.8
 sudo apt-get install haproxy=2.8.\*
 
+echo "ENABLED=1" >> /etc/default/haproxy
+
 echo "
 
 frontend http_front
@@ -15,7 +17,6 @@ frontend http_front
    default_backend http_back
 
 backend http_back
-
    mode http
    balance roundrobin
    server 156769-web-01 35.153.18.80:80 check
