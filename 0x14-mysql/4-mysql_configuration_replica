@@ -5,7 +5,7 @@ log_bin         = /var/log/mysql/mysql-bin.log
 binlog_do_db    = tyrell_corp
 relay-log       = /var/log/mysql/mysql-relay-bin.log
 CHANGE MASTER TO
-MASTER_HOST='web-01.https://www.helthmonitoring.tech',
+MASTER_HOST='35.153.18.80',
 MASTER_USER='replica_user',
 MASTER_PASSWORD='Sallah19@',
 MASTER_LOG_FILE='mysql-bin.000001',
